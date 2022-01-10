@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
 
+let counter = 0;
+
+function CountingClicks() {
+  document.getElementById("counting").innerHTML = ++counter;
+}
+
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  var counterVal = 0;
 
-  function handleOrangeClick(fruit) {
-    // Similar to this.setState({ fruit: 'orange' })
-    setFruit('orange');
-  }
+function incrementClick() {
+    updateDisplay(++counterVal);
+}
 
-  const enviarDatos =()=>{
-    console.log("el nombre de la fruta es: ", fruit)
-    }
+function resetCounter() {
+  document.getElementById("counting").innerHTML = (counter=0);
+}
 
+function updateDisplay(val) {
+    document.getElementById("counter-label").innerHTML = val;
+}
   return (
-        <div>
-          <p>You clicked {fruit} times</p>
-          <input type="text" onChange={(e)=>{setFruit(e.target.value)}}></input>
-          <button onClick={enviarDatos}>
-           Click me
-          </button>
-        </div>
+        <>
+          <h3><center>JavaScript Click Counter</center></h3>
+<div>
+    <center><h3 id="counting">0</h3></center>
+</div>
+<center>
+    <div>
+        <button onClick= {CountingClicks}>Click Me</button>
+        <button onClick={resetCounter}>Reset</button>
+    </div>
+</center>
+        </>
       );
 
 }
