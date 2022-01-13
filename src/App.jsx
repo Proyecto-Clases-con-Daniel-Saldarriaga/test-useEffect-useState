@@ -1,42 +1,23 @@
-import React, { useState } from 'react';
+import Layout from "layouts/Layout";
+import Cliente from "pages/Cliente";
+import Ventas from "pages/Ventas";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-let counter = 0;
-
-function CountingClicks() {
-  document.getElementById("counting").innerHTML = ++counter;
+function App(){
+  return(
+    <>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/clientes" element={<Layout><div><Cliente/></div></Layout>} />
+          <Route path="/ventas" element={<Layout><div><Ventas/></div></Layout>} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
-function ExampleWithManyStates() {
-  var counterVal = 0;
-
-function incrementClick() {
-    updateDisplay(++counterVal);
-}
-
-function resetCounter() {
-  document.getElementById("counting").innerHTML = (counter=0);
-}
-
-function updateDisplay(val) {
-    document.getElementById("counter-label").innerHTML = val;
-}
-  return (
-        <>
-          <h3><center>JavaScript Click Counter</center></h3>
-<div>
-    <center><h3 id="counting">0</h3></center>
-</div>
-<center>
-    <div>
-        <button onClick= {CountingClicks}>Click Me</button>
-        <button onClick={resetCounter}>Reset</button>
-    </div>
-</center>
-        </>
-      );
-
-}
-
-
-
-export default ExampleWithManyStates;
+export default App;
